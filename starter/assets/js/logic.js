@@ -24,3 +24,8 @@ var startTime = 60;
 // question number starts at -1 no questions are being displayed yet
 var questionNumber = -1;
 var score = 0;
+
+
+// SFX Audio Files
+var correctSfxaudio = new Audio("starter/assets/sfx/correct.wav");
+var incorrectSfxaudio = new Audio("starter/assets/sfx/incorrect.wav");
