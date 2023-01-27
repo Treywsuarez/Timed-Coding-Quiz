@@ -1,3 +1,5 @@
+// Questions, options and correct answer for each question in the quiz 
+
 var choices = [
     {
         questionTitles: "String values must be enclosed within ___ when being assigned to variables.",
