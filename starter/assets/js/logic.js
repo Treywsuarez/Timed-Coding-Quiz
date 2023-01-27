@@ -13,3 +13,6 @@ var startScreen = document.querySelector("#start-screen");
 var questionsScreen = document.querySelector("#questions");
 var endScreen = document.querySelector("#end-screen");
 
+// quiz question elements 
+var questionTitle = document.querySelector("#question-title");
+var questionChoices = document.querySelector("#choices");
