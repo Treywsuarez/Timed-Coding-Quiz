@@ -16,3 +16,11 @@ var endScreen = document.querySelector("#end-screen");
 // quiz question elements 
 var questionTitle = document.querySelector("#question-title");
 var questionChoices = document.querySelector("#choices");
+
+// Timer code logic
+var interval; 
+var time = document.querySelector("#time");
+var startTime = 60;
+// question number starts at -1 no questions are being displayed yet
+var questionNumber = -1;
+var score = 0;
