@@ -34,6 +34,32 @@ var score = 0;
 var correctSfxaudio = new Audio("starter/assets/sfx/correct.wav");
 var incorrectSfxaudio = new Audio("starter/assets/sfx/incorrect.wav");
 
+// Fisher-Yates shuffle function to shuffle
+function shuffle(array) {
+    let currentIndex = array.length;
+    let randomIndex;
+
+    // While there remains elements to shuffle.
+    while (currentIndex != 0) {
+
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // swaps arrays index's to shuffle 
+        let temp = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temp;
+
+    }
+    return array;
+}
+
+// shuffles questions and stores in an array
+let shuffledQuestions = shuffle(choices);
+// -1 to match arrays index number
+let choicesLength = choices.length - 1;
+
 
 // function to display current time 
 function getdisplayTime() {
