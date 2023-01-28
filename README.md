@@ -11,6 +11,8 @@ Then a game over page appears showing the users quiz score and an input box for 
 
 There is also a button to clear the scores which also clears the scores in the local storage.
 
+Deploy using code: https://treywsuarez.github.io/Timed-Coding-Quiz/
+
 
 ![JS Quiz](./assets/Screenshot%202023-01-28%20at%2013.08.41.png)
 
