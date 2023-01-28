@@ -22,7 +22,7 @@ var questionChoices = document.querySelector("#choices");
 // TIMER CODE //
 
 // Timer code logic
-var interval; 
+var interval;
 var time = document.querySelector("#time");
 var startTime = 60;
 // question number starts at -1 no questions are being displayed yet
@@ -51,7 +51,7 @@ function descreaseTime(value) {
     var newValue = currentTime - value;
 
     if (newValue <= 0) {
-        clearInterval(interval); 
+        clearInterval(interval);
         setDisplayTime("Time is up!");
         gameOver();
     } else {
@@ -70,13 +70,13 @@ function decreaseTimeByOne() {
 function removeMessage() {
     var messageElements = document.querySelectorAll(".message");
 
-    messageElements.forEach(function (element){
+    messageElements.forEach(function (element) {
         element.remove();
     });
 }
 
 // wrong answer message 
-function wrongAnswerMessages(){
+function wrongAnswerMessages() {
     removeMessage();
     // display the message
     var wrongAnswerMessage = document.createElement("p");
@@ -85,7 +85,37 @@ function wrongAnswerMessages(){
     questionChoices.appendChild(wrongAnswerMessage);
 
     // timer for message to disappear after 2.5 seconds
-    setTimeout(function(){
+    setTimeout(function () {
         wrongAnswerMessage.style.display = "none";
     }, 2500);
 }
+
+// function to check answers and match to choices
+function isTheAnswerCorrect() {
+    let optionButtons = document.querySelectorAll(".option-button");
+    // convert each option into a button
+    optionButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            var currentQuestion = choices[questionNumber];
+            // check for correct answer
+            if (this.textContent === currentQuestion.correctAnswer) {
+                correctSfxaudio.play();
+                score++;
+                // hide current choices before moving to next question
+                optionButtons.forEach(function (choices) {
+                    choices.style.display = "none";
+                });
+                showNextQuestion();
+            } else {
+                incorrectSfxaudio.play();
+                wrongAnswerMessages();
+                // take 10 secs off the timer
+                decreaseTimeByOne(10);
+                score--;
+            }
+        })
+
+    })
+}
+
+
