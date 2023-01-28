@@ -29,3 +29,14 @@ var score = 0;
 // SFX Audio Files
 var correctSfxaudio = new Audio("starter/assets/sfx/correct.wav");
 var incorrectSfxaudio = new Audio("starter/assets/sfx/incorrect.wav");
+
+
+// function to display current time 
+function getdisplayTime() {
+    return Number(time.textContent);
+}
+
+// function to set time and display it 
+function setDisplayTime(newTime) {
+    time.textContent = newTime;
+}
