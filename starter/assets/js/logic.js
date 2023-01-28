@@ -118,4 +118,26 @@ function isTheAnswerCorrect() {
     })
 }
 
+// move to the next question
+function showNextQuestion(){
+    // end game when all questions answered 
+    if (questionNumber < choicesLength){
+        // remove message before next question is displayed
+        removeMessage();
 
+        // add 1 to to index to return next question
+        questionNumber += 1;
+        console.log(questionNumber);
+
+        shuffle(choice.options).forEach(function (item) {
+            let optionButton = document.createElement("button");
+            optionButton.textContent = item;
+            optionButton.classList.add("option-button");
+            choicesElement.appendChild(optionButton);
+        });
+        // runs function to check if correct answer was selected
+        isTheAnswerCorrect();
+    } else {
+        gameOver();
+    }
+}
