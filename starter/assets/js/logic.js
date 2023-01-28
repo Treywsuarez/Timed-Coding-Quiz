@@ -16,7 +16,7 @@ var questionsScreen = document.querySelector("#questions");
 var endScreen = document.querySelector("#end-screen");
 
 // quiz question elements 
-var questionTitle = document.querySelector("#question-title");
+var questionTitleElement = document.querySelector("#question-title");
 var questionChoices = document.querySelector("#choices");
 
 // TIMER CODE //
@@ -62,7 +62,7 @@ let choicesLength = choices.length - 1;
 
 
 // function to display current time 
-function getdisplayTime() {
+function getDisplayTime() {
     return Number(time.textContent);
 }
 
@@ -72,7 +72,7 @@ function setDisplayTime(newTime) {
 }
 
 // function to decrease time by value
-function descreaseTime(value) {
+function decreaseTime(value) {
     var currentTime = getDisplayTime();
     var newValue = currentTime - value;
 
@@ -88,7 +88,7 @@ function descreaseTime(value) {
 
 // function to decrease time by 1 
 function decreaseTimeByOne() {
-    decreaseTimeByOne(1);
+    decreaseTime(1);
 }
 
 // QUESTIONS CODE //
@@ -118,7 +118,7 @@ function wrongAnswerMessages() {
 
 // function to check answers and match to choices
 function isTheAnswerCorrect() {
-    let optionButtons = document.querySelectorAll(".option-button");
+    var optionButtons = document.querySelectorAll(".option-button");
     // convert each option into a button
     optionButtons.forEach(function (button) {
         button.addEventListener("click", function () {
@@ -136,7 +136,7 @@ function isTheAnswerCorrect() {
                 incorrectSfxaudio.play();
                 wrongAnswerMessages();
                 // take 10 secs off the timer
-                decreaseTimeByOne(10);
+                decreaseTime(10);
                 score--;
             }
         })
