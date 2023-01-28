@@ -167,3 +167,12 @@ function showNextQuestion(){
         gameOver();
     }
 }
+
+// END GAME CODE //
+
+
+function gameOver() {
+    questionScreen.classList.add("hide");
+    endScreen.classList.remove("hide");
+    finalScore.textContent = score;
+}
