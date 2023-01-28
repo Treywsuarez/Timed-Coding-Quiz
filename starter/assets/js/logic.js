@@ -172,7 +172,23 @@ function showNextQuestion(){
 
 
 function gameOver() {
-    questionScreen.classList.add("hide");
+    questionsScreen.classList.add("hide");
     endScreen.classList.remove("hide");
     finalScore.textContent = score;
 }
+
+
+// START GAME CODE //
+
+start.addEventListener("click", function (event) {
+    event.preventDefault();
+    setDisplayTime(startTime);
+    // decrease time by 1 every second
+    interval = setInterval(decreaseTimeByOne, 1000);
+    // hide the start screen 
+    startScreen.classList.add("hide");
+    // removes the class hide from the question screen to display the question screen
+    questionsScreen.classList.remove("hide");
+    showNextQuestion();
+})
+
