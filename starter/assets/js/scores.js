@@ -34,3 +34,12 @@ function getScores() {
         highscoreElements.appendChild(listScores);
     })
 }
+
+// button to clear high scores
+clear.addEventListener("click", function(){
+    localStorage.clear();
+    highscoreElements.innerHTML = "";
+})
+
+// check storage for scores
+getScores();
