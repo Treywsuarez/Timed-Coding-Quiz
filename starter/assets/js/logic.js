@@ -1,3 +1,5 @@
+// HTML SELECTIONS //
+
 // buttons for quiz
 var startbtn = document.querySelector("#Start");
 var submitbtn = document.querySelector("#submit");
@@ -16,6 +18,8 @@ var endScreen = document.querySelector("#end-screen");
 // quiz question elements 
 var questionTitle = document.querySelector("#question-title");
 var questionChoices = document.querySelector("#choices");
+
+// TIMER CODE //
 
 // Timer code logic
 var interval; 
@@ -59,4 +63,29 @@ function descreaseTime(value) {
 // function to decrease time by 1 
 function decreaseTimeByOne() {
     decreaseTimeByOne(1);
+}
+
+// QUESTIONS CODE //
+
+function removeMessage() {
+    var messageElements = document.querySelectorAll(".message");
+
+    messageElements.forEach(function (element){
+        element.remove();
+    });
+}
+
+// wrong answer message 
+function wrongAnswerMessages(){
+    removeMessage();
+    // display the message
+    var wrongAnswerMessage = document.createElement("p");
+    wrongAnswerMessage.textContent = "Incorrect!";
+    wrongAnswerMessage.classList.add("message", "incorrect");
+    questionChoices.appendChild(wrongAnswerMessage);
+
+    // timer for message to disappear after 2.5 seconds
+    setTimeout(function(){
+        wrongAnswerMessage.style.display = "none";
+    }, 2500);
 }
