@@ -40,3 +40,23 @@ function getdisplayTime() {
 function setDisplayTime(newTime) {
     time.textContent = newTime;
 }
+
+// function to decrease time by value
+function descreaseTime(value) {
+    var currentTime = getDisplayTime();
+    var newValue = currentTime - value;
+
+    if (newValue <= 0) {
+        clearInterval(interval); 
+        setDisplayTime("Time is up!");
+        gameOver();
+    } else {
+        // display new time 
+        setDisplayTime(newValue);
+    }
+}
+
+// function to decrease time by 1 
+function decreaseTimeByOne() {
+    decreaseTimeByOne(1);
+}
