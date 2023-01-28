@@ -1,8 +1,8 @@
 // HTML SELECTIONS //
 
 // buttons for quiz
-var startbtn = document.querySelector("#Start");
-var submitbtn = document.querySelector("#submit");
+var start = document.querySelector("#start");
+var submit = document.querySelector("#submit");
 
 // user Initials input logic
 var initialsInput = document.querySelector("#initials")
@@ -153,13 +153,19 @@ function showNextQuestion(){
 
         // add 1 to to index to return next question
         questionNumber += 1;
+        // shuffles questions then displays a question title on the webpage
+        var questionTitle = shuffledQuestions[questionNumber].questionTitles;
+        questionTitleElement.textContent = questionTitle;
+        // displays corresponding options 
+        var choice = shuffledQuestions[questionNumber];
+        // creates choices buttons and displays the choices on the webpage 
         console.log(questionNumber);
 
         shuffle(choice.options).forEach(function (item) {
-            let optionButton = document.createElement("button");
+            var optionButton = document.createElement("button");
             optionButton.textContent = item;
             optionButton.classList.add("option-button");
-            choicesElement.appendChild(optionButton);
+            questionChoices.appendChild(optionButton);
         });
         // runs function to check if correct answer was selected
         isTheAnswerCorrect();
@@ -192,3 +198,35 @@ start.addEventListener("click", function (event) {
     showNextQuestion();
 })
 
+submit.addEventListener("click", function (event) {
+    // if no initials entered score is not saved
+    if (initialsInput.value === "") {
+        return;
+    }
+
+    var scoresString = localStorage.getItem("scores");
+    var scores;
+
+    // if no data in local storage a new string of scores is created
+    if (scoresString === null) {
+        scores = [];
+    } else {
+        // converts in local storage into an array with objects
+        scores = JSON.parse(scoresString);
+    }
+
+    var scoreObject = {
+        initials: initialsInput.value.toUpperCase(),
+        score: score
+    };
+
+    scores.push(scoreObject);
+    // converts score to a string to be stored in local storage
+    localStorage.setItem("scores", JSON.stringify(scores));
+    endScreen.classList.add("hide");
+    startScreen.classList.remove("hide");
+    // sets initials input box back to empty for next user
+    initialsInput.value = "";
+    // sets score back to 0 for next user
+    score = 0;
+});
